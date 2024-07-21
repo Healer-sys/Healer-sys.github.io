@@ -64,5 +64,5 @@ const site = new Blog(&#39;菠菜眾長&#39;, &#39;Lruihao&#39;, &#39;https://lr
 ---
 
 > 作者:   
-> URL: http://localhost:1313/about/  
+> URL: Healer-sys.github.io/about/  
 
