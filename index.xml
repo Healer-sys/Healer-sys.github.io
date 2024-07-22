@@ -1,17 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Skylar的博客</title>
-    <link>Healer-sys.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Skylar的博客</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>715885289@qq.com (莫德飞)</managingEditor>
       <webMaster>715885289@qq.com (莫德飞)</webMaster><lastBuildDate>Sun, 21 Jul 2024 13:06:08 &#43;0800</lastBuildDate>
-      <atom:link href="Healer-sys.github.io/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
   <title>我的第一篇文章</title>
-  <link>Healer-sys.github.io/posts/583bc6c/</link>
+  <link>http://localhost:1313/posts/583bc6c/</link>
   <pubDate>Sun, 21 Jul 2024 13:06:08 &#43;0800</pubDate>
   <author>莫德飞</author>
-  <guid>Healer-sys.github.io/posts/583bc6c/</guid>
+  <guid>http://localhost:1313/posts/583bc6c/</guid>
   <description><![CDATA[<p><details>
   <summary>展开听音乐 🎵🎶</summary>
   <meting-js auto="https://music.163.com/#/playlist?id=9638533417" theme="#448aff"></meting-js>
