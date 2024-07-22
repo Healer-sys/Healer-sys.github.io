@@ -2,10 +2,13 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   ><url>
-      <loc>http://localhost:1313/posts/</loc><lastmod>2024-07-22T01:16:24&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-      <loc>http://localhost:1313/</loc><lastmod>2024-07-22T01:16:24&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/categories/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/categories/gie%E7%BB%8F%E9%AA%8C/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/tags/git/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/posts/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/tags/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/posts/index/</loc><lastmod>2024-07-23T00:46:30&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
       <loc>http://localhost:1313/posts/583bc6c/</loc><lastmod>2024-07-22T01:16:24&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
       <loc>http://localhost:1313/about/</loc><lastmod>2024-07-21T22:09:06&#43;08:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-      <loc>http://localhost:1313/categories/</loc><changefreq>daily</changefreq><priority>0.5</priority></url><url>
-      <loc>http://localhost:1313/collections/</loc><changefreq>daily</changefreq><priority>0.5</priority></url><url>
-      <loc>http://localhost:1313/tags/</loc><changefreq>daily</changefreq><priority>0.5</priority></url></urlset>
+      <loc>http://localhost:1313/collections/</loc><changefreq>daily</changefreq><priority>0.5</priority></url></urlset>
