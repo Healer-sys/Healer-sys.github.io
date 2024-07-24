@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Cmake - 标签 - Skylar的博客</title>
+    <link>http://localhost:1313/tags/cmake/</link>
+    <description>Cmake - 标签 | Skylar的博客</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>715885289@qq.com (莫德飞)</managingEditor>
+      <webMaster>715885289@qq.com (莫德飞)</webMaster><lastBuildDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/cmake/" rel="self" type="application/rss+xml" /><item>
+  <title>使用cmake的笔记</title>
+  <link>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
+  <pubDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</pubDate>
+  <author>莫德飞</author>
+  <guid>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</guid>
+  <description><![CDATA[CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S .]]></description>
+</item>
+</channel>
+</rss>

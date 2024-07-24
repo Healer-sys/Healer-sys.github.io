@@ -6,15 +6,15 @@
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>715885289@qq.com (莫德飞)</managingEditor>
       <webMaster>715885289@qq.com (莫德飞)</webMaster><lastBuildDate>Tue, 23 Jul 2024 00:46:30 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/gie%E7%BB%8F%E9%AA%8C/" rel="self" type="application/rss+xml" /><item>
   <title>总结一些Gie经验</title>
-  <link>http://localhost:1313/posts/index/</link>
+  <link>http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/</link>
   <pubDate>Tue, 23 Jul 2024 00:46:30 &#43;0800</pubDate>
   <author>莫德飞</author>
-  <guid>http://localhost:1313/posts/index/</guid>
+  <guid>http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/</guid>
   <description><![CDATA[Git撤销对远程仓库的push&amp;commit提交 撤销push 执行 git log查看日志，获取需要回退的版本号 执行 git reset –-soft &lt;版本号&gt; ，如 git reset &ndash;soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的 然后执行 git log 查看
 此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交
 git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：
 前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。
-执行 git push origin 分支名 –-force ，强制提交当前版本号。 至此，撤销push提交完成。
+执行 git push origin 分支名 &ndash;force ，强制提交当前版本号。 至此，撤销push提交完成。
 撤销commit 执行 git log 查看需要撤销的commit的前面一个提交版本的id； 执行 git reset &ndash;hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的 执行 git log 查看，commit提交已撤销 添加多个远程仓库 修改config文件 定位到.git/config [remote &ldquo;origin&rdquo;] 远程：
 url：推送地址
 fetch：拉取地址

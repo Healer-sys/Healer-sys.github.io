@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>使用cmake的笔记 - Skylar的博客</title><meta name="author" content="莫德飞">
+<meta name="author-link" content="">
+<meta name="description" content="CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S ." /><meta name="keywords" content='cmake, Linux, gcc, 交叉编译' />
+  <meta itemprop="name" content="使用cmake的笔记">
+  <meta itemprop="description" content="CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S .">
+  <meta itemprop="datePublished" content="2024-07-24T00:30:45+08:00">
+  <meta itemprop="dateModified" content="2024-07-24T18:15:15+08:00">
+  <meta itemprop="wordCount" content="227">
+  <meta itemprop="image" content="http://localhost:1313/logo.png">
+  <meta itemprop="keywords" content="Cmake,Linux,Gcc,交叉编译"><meta property="og:url" content="http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/">
+  <meta property="og:site_name" content="Skylar的博客">
+  <meta property="og:title" content="使用cmake的笔记">
+  <meta property="og:description" content="CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S .">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-24T00:30:45+08:00">
+    <meta property="article:modified_time" content="2024-07-24T18:15:15+08:00">
+    <meta property="article:tag" content="Cmake">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Gcc">
+    <meta property="article:tag" content="交叉编译">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="使用cmake的笔记">
+  <meta name="twitter:description" content="CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S .">
+<meta name="application-name" content="Skylar的博客">
+<meta name="apple-mobile-web-app-title" content="Skylar的博客"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="http://localhost:1313/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" /><link rel="stylesheet" href="/css/style.min.70e2ef24c395a5c2d7ca270b79ba83b6038db88da10b866f22f0ab73dd67813c.css" integrity="sha256-cOLvJMOVpcLXyicLebqDtgONuI2hC4ZvIvCrc91ngTw="><link rel="preload" href="/lib/fontawesome-free/all.min.0934b1fc0d3a766d41d3adf5e7a115875e66e98ebba408d965a41cf3d2cb4ab5.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.0934b1fc0d3a766d41d3adf5e7a115875e66e98ebba408d965a41cf3d2cb4ab5.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU="></noscript><link rel="preload" href="/lib/animate/animate.min.5fbaeb9f8e25d7e0143bae61d4b1802c16ce7390b96ceb2d498b0d96ff4c853f.css" integrity="sha256-X7rrn44l1+AUO65h1LGALBbOc5C5bOstSYsNlv9MhT8=" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.5fbaeb9f8e25d7e0143bae61d4b1802c16ce7390b96ceb2d498b0d96ff4c853f.css" integrity="sha256-X7rrn44l1+AUO65h1LGALBbOc5C5bOstSYsNlv9MhT8="></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用cmake的笔记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0\/"
+    },"image": ["http:\/\/localhost:1313\/favicon.ico"],"genre": "posts","keywords": "cmake, Linux, gcc, 交叉编译","wordcount":  227 ,
+    "url": "http:\/\/localhost:1313\/posts\/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0\/","datePublished": "2024-07-24T00:30:45+08:00","dateModified": "2024-07-24T18:15:15+08:00","publisher": {
+      "@type": "Organization",
+      "name": "莫德飞","logo": "https:\/\/cdn.jsdelivr.net\/gh\/Healer-sys\/ImageHub\/Image\/微信图片_20240504213351.png"},"author": {
+        "@type": "Person",
+        "name": "莫德飞"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="sticky"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Skylar的博客"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20240504213351.png" alt="Skylar的博客" data-title="Skylar的博客" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-pre">😜</span><span class="header-title-text">Skylar的博客</span></a><span class="header-subtitle">123</span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 所有文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/life/"
+                
+                
+              ><i class="fa-solid fa-camera-alt fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Skylar的博客"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20240504213351.png" alt="Skylar的博客" data-title="Skylar的博客" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-pre">😜</span><span class="header-title-text">Skylar的博客</span></a><span class="header-subtitle">123</span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 所有文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/life/"
+                  
+                  
+                ><i class="fa-solid fa-camera-alt fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>使用cmake的笔记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20240504213351.png" alt="莫德飞" data-title="莫德飞" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;莫德飞</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2024-07-24 00:30:45"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-24">2024-07-24</time></span>&nbsp;<span title="更新于 2024-07-24 18:15:15"><i class="fa-regular fa-calendar-check fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-24">2024-07-24</time></span>&nbsp;<span title="227 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cmakeliststxt配置">CMakeLists.txt配置</a></li>
+    <li><a href="#配置cmake">配置cmake</a></li>
+    <li><a href="#构建">构建</a></li>
+    <li><a href="#添加运行调试需要传入的参数">添加运行/调试需要传入的参数</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="cmakeliststxt配置" class="heading-element"><span>CMakeLists.txt配置</span>
+  <a href="#cmakeliststxt%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>必要三个参数</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl">    <span class="c"># 配置最低版本
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.12</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 配置项目名称
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">project</span><span class="p">(</span><span class="s">project_name</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 配置编译器
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_COMPILER</span> <span class="s">/usr/bin/aarch64-linux-gnu-gcc</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 添加可执行文件
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">add_executable</span><span class="p">(</span><span class="s">main</span> <span class="s">main.c</span><span class="p">)</span> </span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>简单为项目添加构建目标</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl">    <span class="c"># 配置最低版本
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.12</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 配置项目名称
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">project</span><span class="p">(</span><span class="s">project_name</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 配置编译器
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_COMPILER</span> <span class="s">/usr/bin/aarch64-linux-gnu-gcc</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 导入头文件
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="o">}</span><span class="s">/include</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 指定第三方库
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">link_libraries</span><span class="p">(</span><span class="s">lib_name1</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">link_libraries</span><span class="p">(</span><span class="s">lib_name2</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 指定库路径
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">link_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="o">}</span><span class="s">/lib_path</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 指定源文件
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">file</span><span class="p">(</span><span class="s">GLOB_RECURSE</span> <span class="s">SOURCES</span> <span class="s2">&#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c"># 添加可执行文件
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">CMAKE_PROJECT_NAME</span><span class="o">}</span> <span class="o">${</span><span class="nv">SOURCES</span><span class="o">}</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置cmake" class="heading-element"><span>配置cmake</span>
+  <a href="#%e9%85%8d%e7%bd%aecmake" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">    <span class="c1"># 简单配置</span>
+</span></span><span class="line"><span class="cl">    cmake -S . -B build <span class="o">(</span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release 可有可无<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 带参数配置</span>
+</span></span><span class="line"><span class="cl">    cmake -DCMAKE_BUILD_TYPE:STRING<span class="o">=</span>Debug            // 调试 or 发布
+</span></span><span class="line"><span class="cl">    / -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL<span class="o">=</span>TRUE      // 生成编译命令
+</span></span><span class="line"><span class="cl">    / -DCMAKE_C_COMPILER:FILEPATH<span class="o">=</span>/usr/bin/aarch64-linux-gnu-gcc    // 指定编译器
+</span></span><span class="line"><span class="cl">    / --no-warn-unused-cli                           // 忽略未使用的参数
+</span></span><span class="line"><span class="cl">    / -S/your_project_path                           // 源码路径
+</span></span><span class="line"><span class="cl">    / -B/your_project_path/build                     // 构建路径
+</span></span><span class="line"><span class="cl">    / -G Ninja                                       // 使用Ninja构建</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="构建" class="heading-element"><span>构建</span>
+  <a href="#%e6%9e%84%e5%bb%ba" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">    cmake --build build                        // 构建
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 补充</span>
+</span></span><span class="line"><span class="cl">    cmake --build build --target all            // 构建全部
+</span></span><span class="line"><span class="cl">    cmake --build build --target clean           // 清空构建
+</span></span><span class="line"><span class="cl">    cmake --build build --target install         // 安装
+</span></span><span class="line"><span class="cl">    cmake --build build --target uninstall        // 卸载
+</span></span><span class="line"><span class="cl">    cmake --build build --target run              // 运行
+</span></span><span class="line"><span class="cl">    cmake --build build --target <span class="nb">test</span>             // 测试
+</span></span><span class="line"><span class="cl">    cmake --build build --target package          // 打包
+</span></span><span class="line"><span class="cl">    cmake --build build --target package_source    // 打包源码</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加运行调试需要传入的参数" class="heading-element"><span>添加运行/调试需要传入的参数</span>
+  <a href="#%e6%b7%bb%e5%8a%a0%e8%bf%90%e8%a1%8c%e8%b0%83%e8%af%95%e9%9c%80%e8%a6%81%e4%bc%a0%e5%85%a5%e7%9a%84%e5%8f%82%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><pre><code>1. 直接使用cmake tool调试，需要给cmake传入参数，在Settings.json中添加以下内容
+```
+  &quot;cmake.debugConfig&quot;: {
+      &quot;args&quot;: [
+      &quot;arg1&quot;,
+      &quot;arg2&quot;,
+      &quot;....&quot;
+      ]
+  }
+```
+
+2. 如果是vscode gdb 启动，需要添加启动配置，可以在launch.json中添加设置(运行环境是./vscode)
+&gt;   有空可以研究一下vscode的三个配置文件(tasks.json, launch.json, settings.json)
+</code></pre>
+<blockquote>
+<p>建议使用vscode+cmake插件
+因为cmake插件可以快捷设置cmake参数，自动生成编译命令，可以实时编译
+可以用cmake插件生成调试配置，用vscode调试可以图形化显示变量，添加断点，单步运行，更简单直观调试流程</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-07-24 18:15:15">更新于 2024-07-24&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/" data-title="使用cmake的笔记" data-hashtags="cmake,Linux,gcc,交叉编译"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/" data-hashtag="cmake"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/" data-title="使用cmake的笔记"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/cmake/" class="post-tag" title="标签 - Cmake">Cmake</a><a href="/tags/linux/" class="post-tag" title="标签 - Linux">Linux</a><a href="/tags/gcc/" class="post-tag" title="标签 - Gcc">Gcc</a><a href="/tags/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" class="post-tag" title="标签 - 交叉编译">交叉编译</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" class="post-nav-item" rel="prev" title="交叉编译"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>交叉编译</a></div>
+</div>
+<div class="post-reward">
+    <div class="comment">文章有帮到您的话，请我喝杯奶茶吧ヾ(●´∀｀●)</div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>赞赏</label>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="莫德飞 支付宝" data-title="莫德飞 支付宝" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>支付宝</span>
+          </div><div><img loading="lazy" src="/images/wechat.jpg" alt="莫德飞 微信" data-title="莫德飞 微信" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>微信</span>
+          </div></div>
+  </div></article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8">FixIt</a>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.7e5db7914b97e596a36c1abb67ccc7f174f8bb71d38c9a88c55b262ed1737f97.css" integrity="sha256-fl23kUuX5ZajbBq7Z8zH8XT4u3HTjJqIxVsmLtFzf5c=" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.7e5db7914b97e596a36c1abb67ccc7f174f8bb71d38c9a88c55b262ed1737f97.css" integrity="sha256-fl23kUuX5ZajbBq7Z8zH8XT4u3HTjJqIxVsmLtFzf5c="></noscript><script src="/lib/autocomplete/autocomplete.min.ae2da1bd62c6469ee27770ad1cddf2e8296d8a7f6d85b091463e5200c5e320af.js" integrity="sha256-ri2hvWLGRp7id3CtHN3y6Cltin9thbCRRj5SAMXjIK8=" defer></script><script src="/lib/fuse/fuse.min.c57339c3fa16b1d69d9a6b46749a8139ef8d4fc9bbfe48144ff897aa7d4222ec.js" integrity="sha256-xXM5w/oWsdadmmtGdJqBOe+NT8m7/kgUT/iXqn1CIuw=" defer></script><script src="/lib/sharer/sharer.min.ba5171a78670b031914e623431a33a3d73c1ea9897e552ba73bc2c2da7c777b9.js" integrity="sha256-ulFxp4ZwsDGRTmI0MaM6PXPB6piX5VK6c7wsLafHd7k=" async defer></script><script src="/lib/katex/katex.min.9f45307c5794ed247a0d095f3a62e52ef2215a67b2327203a7fd919959ae79d1.js" integrity="sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=" defer></script><script src="/lib/katex/auto-render.min.7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae.js" integrity="sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=" defer></script><script src="/lib/katex/copy-tex.min.07770af90943a1de1a1010794bc78c6a7346d46d48fb63e35cc76ba76b827604.js" integrity="sha256-B3cK+QlDod4aEBB5S8eManNG1G1I+2PjXMdrp2uCdgQ=" defer></script><script src="/lib/katex/mhchem.min.f0ca03df194b8c3d6017ff455db6a0ef98857905663fa311a6cded788b15340b.js" integrity="sha256-8MoD3xlLjD1gF/9FXbag75iFeQVmP6MRps3teIsVNAs=" defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":false},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.8"};</script><script src="/js/theme.min.25b33f9c3277bed845bf0ca82c241d1994aadedd3780bb2d36f1a3ec48643324.js" integrity="sha256-JbM/nDJ3vthFvwyoLCQdGZSq3t03gLstNvGj7EhkMyQ=" defer></script></body>
+</html>

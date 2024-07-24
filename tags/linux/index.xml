@@ -1,0 +1,40 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Linux - 标签 - Skylar的博客</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Linux - 标签 | Skylar的博客</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>715885289@qq.com (莫德飞)</managingEditor>
+      <webMaster>715885289@qq.com (莫德飞)</webMaster><lastBuildDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/linux/" rel="self" type="application/rss+xml" /><item>
+  <title>使用cmake的笔记</title>
+  <link>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
+  <pubDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</pubDate>
+  <author>莫德飞</author>
+  <guid>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</guid>
+  <description><![CDATA[CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S .]]></description>
+</item>
+<item>
+  <title>交叉编译</title>
+  <link>http://localhost:1313/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</link>
+  <pubDate>Wed, 24 Jul 2024 00:29:45 &#43;0800</pubDate>
+  <author>莫德飞</author>
+  <guid>http://localhost:1313/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</guid>
+  <description><![CDATA[1. 查看交叉编译工具链的搜索路径 1 /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/bin/ld --verbose | grep SEARCH_DIR 2. 添加交叉编译工具链的搜索路径 方法一 1 2 # 添加链接库的搜索路径 gcc -L/Your_Path/lib .... 方法二 添加变量
+1 2 3 4 5 6 7 8 # 程序编译时搜索的库路径，即指定gcc编译需要链接动态链接库的目录 export LIBRARY_PATH=/Your_Path/lib:$LIBRARY_PATH # 编译时搜索的头文件路径 export C_INCLUDE_PATH=/Your_Path/lib:$C_INCLUDE_PATH # 程序运行时搜索的库路径 export LD_LIBRARY_PATH=/Your_Path/lib:$LD_LIBRARY_PATH 终极绝招，修改链接器缓存 使用GCC编译动态链接库的项目时，在其他目录下执行很可以出现找不到动态链接库的问题。
+这种情况多发生在动态链接库是自己开发的情况下，原因就是程序运行时找不到去何处加载动态链接库。
+可能会说在编译时指定了链接的目录啊！编译时指定的 -L的目录，只是在程序链接成可执行文件时使用的。程序执行时动态链接库加载不到动态链接库。
+解决办法有两种，第一程序链接时指定链接库的位置，就是使用-wl,-rpath=&lt;link_path&gt;参数，&lt;link_path&gt;就是链接库的路径。如：
+1 gcc -o foo foo.c -L. -lfoo -Wl,-rpath=./ 上面就是指定了链接的位置在当前目录，这种情况只有在当前目录执行./foo时，才是可以正确使用的。一般情况我们使用如下格式：
+1 gcc -o foo foo.c -L$(prefix)/lib -lfoo -Wl,-rpath=$(prefix)/lib 第二种方式就是，将链接库的目录添加到/etc/ld.so.conf文件中或者添加到/etc/ld.so.conf.d/*.conf中，然后使用ldconfig进行更新，进行动态链接库的运行时动态绑定。如： 添加文件/etc/ld.so.conf.d/foo.conf，内容如下：
+/your path/lib 然后执行如下命令：
+1 ldconfig 参考文章: Re: linking with -Wl,-rpath and $(prefix)]]></description>
+</item>
+<item>
+  <title>配置环境变量</title>
+  <link>http://localhost:1313/posts/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+  <pubDate>Wed, 24 Jul 2024 00:25:45 &#43;0800</pubDate>
+  <author>莫德飞</author>
+  <guid>http://localhost:1313/posts/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
+  <description><![CDATA[配置linux的环境变量 第一级，临时环境变量 临时环境变量，仅当前目录下的终端有效，但是当终端关闭的时候，就会失效。 1 export PATH=$PATH:‘your path’ 在目录下，添加到配置文件，当终端关闭的时候，乃然有效，重新打开会自动生效。 创建文件 1 vim .bashrc 添加内容，在底部添加以下内容，然后保存退出。 1 export PATH=$PATH:‘your path’ 添加内容之后，配置还没有生效，需要刷新配置文件，可以重新打开终端，或者执行以下命令 1 2 3 source .bashrc # 或者 source等同于 .(点) . .bashrc 第二级，用户级的永久环境变量 在根目录下，创建配置文件，即Home目录下的.bashrc文件，可以理解成根目录到Home目录，都是用户级的配置文件。同理可以配置单个用户的环境变量。在Home目录下的用户目录创建.bashrc文件，添加内容，然后刷新配置文件。 创建文件 1 2 3 4 5 6 7 # 全部用户生效 cd home vim .bashrc 或者 vim ~/.bashrc # 单个用户生效 vim /home/用户名/.bashrc 在 .bashrc 文件的最后加入环境变量 1 export PATH=$PATH:‘your path’ 保存并退出,刷新配置文件 1 2 :wq source .bashrc 第三级，系统级的永久环境变量 系统级的环境变量，可以理解成全局的配置文件，所有用户都可以使用。 创建文件 1 vim /etc/profile 在 /etc/profile 文件的最后加入环境变量 1 export PATH=$PATH:‘your path’ 保存并退出,刷新配置文件 1 2 :wq source /etc/profile bb $的意思是取变量器，比如$PATH，表示取PATH这个变量的值，$PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbinPATH=$PATH:，可以理解为在内容后追加可以用命令：echo $PATH，来显示环境变量的值exportsource .]]></description>
+</item>
+</channel>
+</rss>

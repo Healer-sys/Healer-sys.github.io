@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>总结一些Gie经验 - Skylar的博客</title><meta name="author" content="莫德飞">
+<meta name="author-link" content="">
+<meta name="description" content="Git撤销对远程仓库的push&amp;commit提交 撤销push 执行 git log查看日志，获取需要回退的版本号 执行 git reset –-soft &lt;版本号&gt; ，如 git reset &ndash;soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的 然后执行 git log 查看
+此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交
+git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：
+前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。
+执行 git push origin 分支名 &ndash;force ，强制提交当前版本号。 至此，撤销push提交完成。
+撤销commit 执行 git log 查看需要撤销的commit的前面一个提交版本的id； 执行 git reset &ndash;hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的 执行 git log 查看，commit提交已撤销 添加多个远程仓库 修改config文件 定位到.git/config [remote &ldquo;origin&rdquo;] 远程：
+url：推送地址
+fetch：拉取地址
+添加remote里面的url，如gitee仓库 push同步提交 1 git push origin 4." /><meta name="keywords" content='Git' />
+  <meta itemprop="name" content="总结一些Gie经验">
+  <meta itemprop="description" content="Git撤销对远程仓库的push&amp;commit提交 撤销push 执行 git log查看日志，获取需要回退的版本号 执行 git reset –-soft &lt;版本号&gt; ，如 git reset –soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的 然后执行 git log 查看
+此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交
+git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：
+前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。
+执行 git push origin 分支名 –force ，强制提交当前版本号。 至此，撤销push提交完成。
+撤销commit 执行 git log 查看需要撤销的commit的前面一个提交版本的id； 执行 git reset –hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的 执行 git log 查看，commit提交已撤销 添加多个远程仓库 修改config文件 定位到.git/config [remote “origin”] 远程：
+url：推送地址
+fetch：拉取地址
+添加remote里面的url，如gitee仓库 push同步提交 1 git push origin 4.">
+  <meta itemprop="datePublished" content="2024-07-23T00:46:30+08:00">
+  <meta itemprop="dateModified" content="2024-07-24T18:15:15+08:00">
+  <meta itemprop="wordCount" content="458">
+  <meta itemprop="image" content="http://localhost:1313/logo.png">
+  <meta itemprop="keywords" content="Git"><meta property="og:url" content="http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/">
+  <meta property="og:site_name" content="Skylar的博客">
+  <meta property="og:title" content="总结一些Gie经验">
+  <meta property="og:description" content="Git撤销对远程仓库的push&amp;commit提交 撤销push 执行 git log查看日志，获取需要回退的版本号 执行 git reset –-soft &lt;版本号&gt; ，如 git reset –soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的 然后执行 git log 查看
+此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交
+git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：
+前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。
+执行 git push origin 分支名 –force ，强制提交当前版本号。 至此，撤销push提交完成。
+撤销commit 执行 git log 查看需要撤销的commit的前面一个提交版本的id； 执行 git reset –hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的 执行 git log 查看，commit提交已撤销 添加多个远程仓库 修改config文件 定位到.git/config [remote “origin”] 远程：
+url：推送地址
+fetch：拉取地址
+添加remote里面的url，如gitee仓库 push同步提交 1 git push origin 4.">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-23T00:46:30+08:00">
+    <meta property="article:modified_time" content="2024-07-24T18:15:15+08:00">
+    <meta property="article:tag" content="Git">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="总结一些Gie经验">
+  <meta name="twitter:description" content="Git撤销对远程仓库的push&amp;commit提交 撤销push 执行 git log查看日志，获取需要回退的版本号 执行 git reset –-soft &lt;版本号&gt; ，如 git reset –soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的 然后执行 git log 查看
+此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交
+git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：
+前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。
+执行 git push origin 分支名 –force ，强制提交当前版本号。 至此，撤销push提交完成。
+撤销commit 执行 git log 查看需要撤销的commit的前面一个提交版本的id； 执行 git reset –hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的 执行 git log 查看，commit提交已撤销 添加多个远程仓库 修改config文件 定位到.git/config [remote “origin”] 远程：
+url：推送地址
+fetch：拉取地址
+添加remote里面的url，如gitee仓库 push同步提交 1 git push origin 4.">
+<meta name="application-name" content="Skylar的博客">
+<meta name="apple-mobile-web-app-title" content="Skylar的博客"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/" /><link rel="prev" href="http://localhost:1313/posts/583bc6c/" /><link rel="next" href="http://localhost:1313/posts/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" /><link rel="stylesheet" href="/css/style.min.70e2ef24c395a5c2d7ca270b79ba83b6038db88da10b866f22f0ab73dd67813c.css" integrity="sha256-cOLvJMOVpcLXyicLebqDtgONuI2hC4ZvIvCrc91ngTw="><link rel="preload" href="/lib/fontawesome-free/all.min.0934b1fc0d3a766d41d3adf5e7a115875e66e98ebba408d965a41cf3d2cb4ab5.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.0934b1fc0d3a766d41d3adf5e7a115875e66e98ebba408d965a41cf3d2cb4ab5.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU="></noscript><link rel="preload" href="/lib/animate/animate.min.5fbaeb9f8e25d7e0143bae61d4b1802c16ce7390b96ceb2d498b0d96ff4c853f.css" integrity="sha256-X7rrn44l1+AUO65h1LGALBbOc5C5bOstSYsNlv9MhT8=" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.5fbaeb9f8e25d7e0143bae61d4b1802c16ce7390b96ceb2d498b0d96ff4c853f.css" integrity="sha256-X7rrn44l1+AUO65h1LGALBbOc5C5bOstSYsNlv9MhT8="></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "总结一些Gie经验",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C\/"
+    },"image": ["http:\/\/localhost:1313\/favicon.ico"],"genre": "posts","keywords": "Git","wordcount":  458 ,
+    "url": "http:\/\/localhost:1313\/posts\/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C\/","datePublished": "2024-07-23T00:46:30+08:00","dateModified": "2024-07-24T18:15:15+08:00","publisher": {
+      "@type": "Organization",
+      "name": "莫德飞","logo": "https:\/\/cdn.jsdelivr.net\/gh\/Healer-sys\/ImageHub\/Image\/微信图片_20240504213351.png"},"author": {
+        "@type": "Person",
+        "name": "莫德飞"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="sticky"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Skylar的博客"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20240504213351.png" alt="Skylar的博客" data-title="Skylar的博客" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-pre">😜</span><span class="header-title-text">Skylar的博客</span></a><span class="header-subtitle">123</span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 所有文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/life/"
+                
+                
+              ><i class="fa-solid fa-camera-alt fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Skylar的博客"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20240504213351.png" alt="Skylar的博客" data-title="Skylar的博客" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-pre">😜</span><span class="header-title-text">Skylar的博客</span></a><span class="header-subtitle">123</span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 所有文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/life/"
+                  
+                  
+                ><i class="fa-solid fa-camera-alt fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>总结一些Gie经验</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20240504213351.png" alt="莫德飞" data-title="莫德飞" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;莫德飞</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/gie%E7%BB%8F%E9%AA%8C/" class="post-category" title="分类 - Gie经验"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Gie经验</a></span></div><div class="post-meta-line"><span title="发布于 2024-07-23 00:46:30"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-23">2024-07-23</time></span>&nbsp;<span title="更新于 2024-07-24 18:15:15"><i class="fa-regular fa-calendar-check fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-24">2024-07-24</time></span>&nbsp;<span title="458 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#撤销push">撤销push</a></li>
+    <li><a href="#撤销commit">撤销commit</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#修改config文件">修改config文件</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#查看分支">查看分支</a></li>
+    <li><a href="#切换分支">切换分支</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="git撤销对远程仓库的pushcommit提交httpswwwcnblogscomchaoxizp9714085html" class="heading-element"><span><a href="https://www.cnblogs.com/chaoxiZ/p/9714085.html"target="_blank" rel="external nofollow noopener noreferrer">Git撤销对远程仓库的push&amp;commit提交</a></span>
+  <a href="#git%e6%92%a4%e9%94%80%e5%af%b9%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e7%9a%84pushcommit%e6%8f%90%e4%ba%a4httpswwwcnblogscomchaoxizp9714085html" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h1><h2 id="撤销push" class="heading-element"><span>撤销push</span>
+  <a href="#%e6%92%a4%e9%94%80push" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>执行 git log查看日志，获取需要回退的版本号</li>
+</ol>
+<p><img loading="lazy" src="https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164303193-2084393469.png" alt="img" srcset="https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164303193-2084393469.png?size=small, https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164303193-2084393469.png?size=medium 1.5x, https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164303193-2084393469.png?size=large 2x" data-title="img" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<ol start="2">
+<li>执行 git reset –-soft &lt;版本号&gt; ，如 git reset &ndash;soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的</li>
+</ol>
+<p>然后执行 git log 查看</p>
+<p><img loading="lazy" src="https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164827547-451137005.png" alt="img" srcset="https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164827547-451137005.png?size=small, https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164827547-451137005.png?size=medium 1.5x, https://img2018.cnblogs.com/blog/788599/201809/788599-20180927164827547-451137005.png?size=large 2x" data-title="img" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<p>此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交</p>
+<blockquote>
+<p>git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：</p>
+<p>   前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。</p>
+</blockquote>
+<ol start="3">
+<li>执行 git push origin 分支名 &ndash;force ，强制提交当前版本号。</li>
+</ol>
+<p>至此，撤销push提交完成。</p>
+<h2 id="撤销commit" class="heading-element"><span>撤销commit</span>
+  <a href="#%e6%92%a4%e9%94%80commit" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>执行 git log 查看需要撤销的commit的前面一个提交版本的id；</li>
+<li>执行 git reset &ndash;hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的</li>
+<li>执行 git log 查看，commit提交已撤销</li>
+</ol>
+<h1 id="添加多个远程仓库" class="heading-element"><span>添加多个远程仓库</span>
+  <a href="#%e6%b7%bb%e5%8a%a0%e5%a4%9a%e4%b8%aa%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h1><h2 id="修改config文件" class="heading-element"><span>修改config文件</span>
+  <a href="#%e4%bf%ae%e6%94%b9config%e6%96%87%e4%bb%b6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>定位到.git/config</li>
+</ol>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151021974.png" alt="image-20240715102010000" srcset="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151021974.png?size=small, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151021974.png?size=medium 1.5x, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151021974.png?size=large 2x" data-title="image-20240715102010000" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<blockquote>
+<p>[remote &ldquo;origin&rdquo;] 远程：</p>
+<p>url：推送地址</p>
+<p>fetch：拉取地址</p>
+</blockquote>
+<ol start="2">
+<li>添加remote里面的url，如gitee仓库</li>
+</ol>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151030982.png" alt="image-20240715102946107" srcset="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151030982.png?size=small, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151030982.png?size=medium 1.5x, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151030982.png?size=large 2x" data-title="image-20240715102946107" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<ol start="3">
+<li>push同步提交</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git push origin</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151034985.png" alt="image-20240715103429622" srcset="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151034985.png?size=small, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151034985.png?size=medium 1.5x, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407151034985.png?size=large 2x" data-title="image-20240715103429622" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>
+4. 至此，添加多个远程仓库完成。</p>
+<h1 id="查看分支和切换分支" class="heading-element"><span>查看分支和切换分支</span>
+  <a href="#%e6%9f%a5%e7%9c%8b%e5%88%86%e6%94%af%e5%92%8c%e5%88%87%e6%8d%a2%e5%88%86%e6%94%af" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h1><h2 id="查看分支" class="heading-element"><span>查看分支</span>
+  <a href="#%e6%9f%a5%e7%9c%8b%e5%88%86%e6%94%af" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">	git branch -a</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192238748.png" alt="image-20240719223802363" srcset="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192238748.png?size=small, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192238748.png?size=medium 1.5x, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192238748.png?size=large 2x" data-title="image-20240719223802363" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<h2 id="切换分支" class="heading-element"><span>切换分支</span>
+  <a href="#%e5%88%87%e6%8d%a2%e5%88%86%e6%94%af" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git checkout branchName</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192301212.png" alt="image-20240719230135038" srcset="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192301212.png?size=small, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192301212.png?size=medium 1.5x, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192301212.png?size=large 2x" data-title="image-20240719230135038" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<h1 id="git拉取推送所有分支及标签httpswwwcnblogscomxiaojilubenp15880248html" class="heading-element"><span><a href="https://www.cnblogs.com/xiaojiluben/p/15880248.html"target="_blank" rel="external nofollow noopener noreferrer">git拉取、推送所有分支及标签</a></span>
+  <a href="#git%e6%8b%89%e5%8f%96%e6%8e%a8%e9%80%81%e6%89%80%e6%9c%89%e5%88%86%e6%94%af%e5%8f%8a%e6%a0%87%e7%ad%behttpswwwcnblogscomxiaojilubenp15880248html" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h1><blockquote>
+<p>从origin1推送到origin2</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin2 <span class="s1">&#39;refs/remotes/origin1/*:refs/heads/*&#39;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 推送后带有后缀demo01 </span>
+</span></span><span class="line"><span class="cl">git push origin2<span class="s1">&#39;refs/remotes/origin1/*:refs/heads/demo01/*&#39;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 推送指定分支 </span>
+</span></span><span class="line"><span class="cl">git push origin2 <span class="s1">&#39;refs/remotes/origin1/dev:refs/heads/dev&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>拉取所有分支到本地</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch -r <span class="p">|</span> grep -v <span class="s1">&#39;\-&gt;&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> remote<span class="p">;</span> <span class="k">do</span> git branch --track <span class="s2">&#34;</span><span class="si">${</span><span class="nv">remote</span><span class="p">#origin/</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$remote</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">done</span>
+</span></span><span class="line"><span class="cl">git fetch --all
+</span></span><span class="line"><span class="cl">git pull --all</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192250216.png" alt="image-20240719225022333" srcset="https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192250216.png?size=small, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192250216.png?size=medium 1.5x, https://cdn.jsdelivr.net/gh/Healer-sys/ImageHub/Image/202407192250216.png?size=large 2x" data-title="image-20240719225022333" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<blockquote>
+<p>拉取所有标签到本地</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">git</span><span class="w"> </span><span class="k">fetch</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="c1">--prune</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>切换远程仓库
+推送所有分支</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">git</span> <span class="nt">push</span> <span class="nt">--mirror</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>推送所有标签</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">git</span> <span class="nt">push</span> <span class="nt">origin</span> <span class="nt">--tags</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>git迁移脚本</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">oldUrl</span><span class="o">=</span><span class="nv">$1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">newUrl</span><span class="o">=</span><span class="nv">$2</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">repoName</span><span class="o">=</span><span class="nv">$3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s2">&#34;oldUrl: %s\nnewUrl: %s\nrepoName: %s\n&#34;</span> <span class="nv">$oldUrl</span> <span class="nv">$newUrl</span> <span class="nv">$repoName</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldUrl</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;不能为空&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newUrl</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;不能为空&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">repoName</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;不能为空&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s2">&#34;克隆原仓库&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> repo <span class="o">||</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">git.exe clone --progress -v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldUrl</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="si">${</span><span class="nv">repoName</span><span class="si">}</span> <span class="o">||</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#git branch -r | grep -v &#39;\-&gt;&#39; | while read remote; do git branch --track &#34;${remote#origin/}&#34; &#34;$remote&#34;; done</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#git fetch --all</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#git pull --all</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#git fetch origin --prune</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 原仓库</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># dev -&gt; dev-origin</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># git remote change new repo</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;增加新仓库&#34;</span>
+</span></span><span class="line"><span class="cl">git remote rename origin origin-old
+</span></span><span class="line"><span class="cl">git remote add origin <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newUrl</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;拉取所有仓库分支&#34;</span>
+</span></span><span class="line"><span class="cl">git fetch origin
+</span></span><span class="line"><span class="cl">git fetch origin-old
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;删除本地dev分支&#34;</span>
+</span></span><span class="line"><span class="cl">git branch -D dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># origin/dev -&gt; origin/dev-bak</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;备份分支&#34;</span>
+</span></span><span class="line"><span class="cl">git checkout -b dev-origin origin-old/dev
+</span></span><span class="line"><span class="cl">git checkout -b dev-yanshi4-11 origin-old/yanshi4-11
+</span></span><span class="line"><span class="cl">git checkout -b dev-bak origin/dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;新仓库切出dev分支&#34;</span>
+</span></span><span class="line"><span class="cl">git checkout -b dev origin/dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;复制ci配置到临时文件&#34;</span>
+</span></span><span class="line"><span class="cl">mkdir -p ../tmp/ <span class="o">||</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">cp .gitlab-ci.yml Dockerfile ../tmp/ <span class="o">||</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;切回旧仓库dev分支&#34;</span>
+</span></span><span class="line"><span class="cl">git checkout master
+</span></span><span class="line"><span class="cl">git branch -D dev
+</span></span><span class="line"><span class="cl">git checkout -b dev origin-old/yanshi4-11
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;配置ci配置&#34;</span>
+</span></span><span class="line"><span class="cl">mv -f ../tmp/* ./ <span class="o">||</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">mv -f ../tmp/.gitlab-ci.yml ./  <span class="o">||</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;ci适配&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;删除旧仓库远程配置，防止误删&#34;</span>
+</span></span><span class="line"><span class="cl">git remote remove origin-old
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;推送所有分支&#34;</span>
+</span></span><span class="line"><span class="cl">git push --progress <span class="s2">&#34;origin&#34;</span> dev-origin
+</span></span><span class="line"><span class="cl">git push --progress <span class="s2">&#34;origin&#34;</span> dev-yanshi4-11
+</span></span><span class="line"><span class="cl">git push --progress <span class="s2">&#34;origin&#34;</span> dev-bak
+</span></span><span class="line"><span class="cl">git push --force --progress <span class="s2">&#34;origin&#34;</span> dev:dev</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-07-24 18:15:15">更新于 2024-07-24&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/" data-title="总结一些Gie经验" data-hashtags="Git"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/" data-hashtag="Git"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/" data-title="总结一些Gie经验"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/git/" class="post-tag" title="标签 - Git">Git</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/583bc6c/" class="post-nav-item" rel="prev" title="我的第一篇文章"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>我的第一篇文章</a>
+      <a href="/posts/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-nav-item" rel="next" title="配置环境变量">配置环境变量<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div class="post-reward">
+    <div class="comment">文章有帮到您的话，请我喝杯奶茶吧ヾ(●´∀｀●)</div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>赞赏</label>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="莫德飞 支付宝" data-title="莫德飞 支付宝" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>支付宝</span>
+          </div><div><img loading="lazy" src="/images/wechat.jpg" alt="莫德飞 微信" data-title="莫德飞 微信" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>微信</span>
+          </div></div>
+  </div></article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8">FixIt</a>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.7e5db7914b97e596a36c1abb67ccc7f174f8bb71d38c9a88c55b262ed1737f97.css" integrity="sha256-fl23kUuX5ZajbBq7Z8zH8XT4u3HTjJqIxVsmLtFzf5c=" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.7e5db7914b97e596a36c1abb67ccc7f174f8bb71d38c9a88c55b262ed1737f97.css" integrity="sha256-fl23kUuX5ZajbBq7Z8zH8XT4u3HTjJqIxVsmLtFzf5c="></noscript><script src="/lib/autocomplete/autocomplete.min.ae2da1bd62c6469ee27770ad1cddf2e8296d8a7f6d85b091463e5200c5e320af.js" integrity="sha256-ri2hvWLGRp7id3CtHN3y6Cltin9thbCRRj5SAMXjIK8=" defer></script><script src="/lib/fuse/fuse.min.c57339c3fa16b1d69d9a6b46749a8139ef8d4fc9bbfe48144ff897aa7d4222ec.js" integrity="sha256-xXM5w/oWsdadmmtGdJqBOe+NT8m7/kgUT/iXqn1CIuw=" defer></script><script src="/lib/sharer/sharer.min.ba5171a78670b031914e623431a33a3d73c1ea9897e552ba73bc2c2da7c777b9.js" integrity="sha256-ulFxp4ZwsDGRTmI0MaM6PXPB6piX5VK6c7wsLafHd7k=" async defer></script><script src="/lib/katex/katex.min.9f45307c5794ed247a0d095f3a62e52ef2215a67b2327203a7fd919959ae79d1.js" integrity="sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=" defer></script><script src="/lib/katex/auto-render.min.7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae.js" integrity="sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=" defer></script><script src="/lib/katex/copy-tex.min.07770af90943a1de1a1010794bc78c6a7346d46d48fb63e35cc76ba76b827604.js" integrity="sha256-B3cK+QlDod4aEBB5S8eManNG1G1I+2PjXMdrp2uCdgQ=" defer></script><script src="/lib/katex/mhchem.min.f0ca03df194b8c3d6017ff455db6a0ef98857905663fa311a6cded788b15340b.js" integrity="sha256-8MoD3xlLjD1gF/9FXbag75iFeQVmP6MRps3teIsVNAs=" defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":false},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.8"};</script><script src="/js/theme.min.25b33f9c3277bed845bf0ca82c241d1994aadedd3780bb2d36f1a3ec48643324.js" integrity="sha256-JbM/nDJ3vthFvwyoLCQdGZSq3t03gLstNvGj7EhkMyQ=" defer></script></body>
+</html>
