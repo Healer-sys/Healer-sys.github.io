@@ -27,9 +27,9 @@
 
 - 👨‍💻 正在完善中...
 
-{{&lt; admonition info &gt;}}
+{{&lt; admonition tip &#34;网易云音乐&#34; &gt;}}
   来听**我喜欢**的歌单吧
-{{&lt; music auto=&#34;https://music.163.com/#/playlist?id=9638533417&#34; &gt;}}
+  {{&lt; music auto=&#34;https://music.163.com/#/playlist?id=9638533417&#34; &gt;}}
 
 {{&lt; /admonition &gt;}}
 

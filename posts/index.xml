@@ -5,53 +5,6 @@
     <description>所有文章 | Skylar的博客</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>715885289@qq.com (莫德飞)</managingEditor>
       <webMaster>715885289@qq.com (莫德飞)</webMaster><lastBuildDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
-  <title>总结一些Gie经验</title>
-  <link>http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/</link>
-  <pubDate>Tue, 23 Jul 2024 00:46:30 &#43;0800</pubDate>
-  <author>莫德飞</author>
-  <guid>http://localhost:1313/posts/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9Bgie%E7%BB%8F%E9%AA%8C/</guid>
-  <description><![CDATA[Git撤销对远程仓库的push&amp;commit提交 撤销push 执行 git log查看日志，获取需要回退的版本号 执行 git reset –-soft &lt;版本号&gt; ，如 git reset &ndash;soft 4f5e9a90edeadcc45d85f43bd861a837fa7ce4c7 ，重置至指定版本的提交，达到撤销提交的目的 然后执行 git log 查看
-此时，已重置至指定版本的提交，log中已经没有了需要撤销的提交
-git reset 命令分为两种： git reset –-soft 与 git reset –-hard ，区别是：
-前者表示只是改变了HEAD的指向，本地代码不会变化，我们使用git status依然可以看到，同时也可以git commit提交。后者直接回改变本地源码，不仅仅指向变化了，代码也回到了那个版本时的代码。
-执行 git push origin 分支名 &ndash;force ，强制提交当前版本号。 至此，撤销push提交完成。
-撤销commit 执行 git log 查看需要撤销的commit的前面一个提交版本的id； 执行 git reset &ndash;hard commit_id ，该commit_id为需要撤销的commit的提交的前面一个提交的版本，即需要恢复到的提交的id，重置至指定版本的提交，达到撤销提交的目的 执行 git log 查看，commit提交已撤销 添加多个远程仓库 修改config文件 定位到.git/config [remote &ldquo;origin&rdquo;] 远程：
-url：推送地址
-fetch：拉取地址
-添加remote里面的url，如gitee仓库 push同步提交 1 git push origin 4.]]></description>
-</item>
-<item>
-  <title>使用cmake的笔记</title>
-  <link>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
-  <pubDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</pubDate>
-  <author>莫德飞</author>
-  <guid>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</guid>
-  <description><![CDATA[CMakeLists.txt配置 必要三个参数 1 2 3 4 5 6 7 8 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 添加可执行文件 add_executable(main main.c) 简单为项目添加构建目标 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 # 配置最低版本 cmake_minimum_required(VERSION 2.8.12) # 配置项目名称 project(project_name) # 配置编译器 set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc) # 导入头文件 include_directories(${PROJECT_SOURCE_DIR}/include) # 指定第三方库 link_libraries(lib_name1) link_libraries(lib_name2) # 指定库路径 link_directories(${PROJECT_SOURCE_DIR}/lib_path) # 指定源文件 file(GLOB_RECURSE SOURCES &#34;${PROJECT_SOURCE_DIR}/src/*.c&#34;) # 添加可执行文件 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}) 配置cmake 1 2 3 4 5 6 7 8 9 10 # 简单配置 cmake -S .]]></description>
-</item>
-<item>
-  <title>我的第一篇文章</title>
-  <link>http://localhost:1313/posts/583bc6c/</link>
-  <pubDate>Sun, 21 Jul 2024 13:06:08 &#43;0800</pubDate>
-  <author>莫德飞</author>
-  <guid>http://localhost:1313/posts/583bc6c/</guid>
-  <description><![CDATA[<p><details>
-  <summary>展开听音乐 🎵🎶</summary>
-  <meting-js auto="https://music.163.com/#/playlist?id=9638533417" theme="#448aff"></meting-js>
-</details>
-博客（英语：Blog）是一种在线日记型式的个人网站，借由张帖子章、图片或视频来记录生活、抒发情感或分享信息。博客上的文章通常根据张贴时间，以倒序方式由新到旧排列。
-<div class="douyin">
-  <iframe src="//open.douyin.com/player/video?vid=7388149561765760266&autoplay=0" border="0" framespacing="0" allowfullscreen="true"></iframe>
-</div></p>
-<div class="details admonition info open">
-    <div class="details-summary admonition-title">
-      <i class="icon fa-solid fa-info-circle fa-fw" aria-hidden="true"></i>信息<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
-    </div>
-    <div class="details-content">
-      <div class="admonition-content">一个 <strong>信息</strong> 横幅</div>
-    </div>
-  </div>]]></description>
-</item>
-<item>
   <title>使用cmake的笔记</title>
   <link>http://localhost:1313/posts/%E4%BD%BF%E7%94%A8cmake%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
   <pubDate>Wed, 24 Jul 2024 00:30:45 &#43;0800</pubDate>
